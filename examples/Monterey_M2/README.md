@@ -11,15 +11,43 @@ provider "aws" {
 
 module "dedicated-host" {
   source            = "DanielRDias/mac/aws"
-  version           = "0.0.1"
+  version           = "1.0.0"
   macos_version     = "12"   # macOS Monterey
   mac_type          = "mac2" # arm64_mac
   subnet_id         = "subnet-xxx"
 
   tags = {
-    Name    = "Terraform Mac"
-    Version = "12 macOS Monterey"
-    Type    = "mac2"
+    Name        = "Terraform Mac"
+    Terraform   = "true"
+    Environment = "dev"
   }
 }
 ```
+
+<!-- BEGIN_TF_DOCS -->
+## Requirements
+
+No requirements.
+
+## Providers
+
+No providers.
+
+## Modules
+
+| Name | Source | Version |
+|------|--------|---------|
+| <a name="module_mac"></a> [mac](#module\_mac) | ../../ | n/a |
+
+## Resources
+
+No resources.
+
+## Inputs
+
+No inputs.
+
+## Outputs
+
+No outputs.
+<!-- END_TF_DOCS -->

@@ -6,11 +6,11 @@ module "mac" {
   source        = "../../"
   macos_version = "12"   # macOS Monterey
   mac_type      = "mac2" # arm64_mac
-  subnet_id     = "subnet-xxx"
+  subnet_id     = "subnet-0be4a2ca823bb5600"
 
   tags = {
-    Name    = "Terraform Mac"
-    Version = "12 macOS Monterey"
-    Type    = "mac2"
+    Name        = "Terraform Mac"
+    Terraform   = "true"
+    Environment = "dev"
   }
 }
