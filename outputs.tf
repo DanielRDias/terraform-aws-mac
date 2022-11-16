@@ -1,13 +1,3 @@
-output "dedicated_hosts_arn" {
-  description = "The ARN of the Dedicated Host."
-  value       = module.dedicated-host.dedicated_host_arn
-}
-
-output "dedicated_host_id" {
-  description = "Dedicated Host ID"
-  value       = module.dedicated-host.dedicated_host_id
-}
-
 output "mac_ami_id" {
   value = data.aws_ami.mac.id
 }
