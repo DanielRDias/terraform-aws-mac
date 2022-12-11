@@ -54,14 +54,13 @@ No requirements.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_dedicated-host"></a> [dedicated-host](#module\_dedicated-host) | DanielRDias/dedicated-host/aws | ~> 1.0 |
 | <a name="module_ec2_instance"></a> [ec2\_instance](#module\_ec2\_instance) | terraform-aws-modules/ec2-instance/aws | ~> 4.0 |
+| <a name="module_host"></a> [host](#module\_host) | DanielRDias/dedicated-host/aws | ~> 1.0 |
 
 ## Resources
 
 | Name | Type |
 |------|------|
-| [aws_instance.mac](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance) | resource |
 | [aws_ami.mac](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ami) | data source |
 | [aws_subnet.selected](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/subnet) | data source |
 
@@ -127,8 +126,24 @@ No requirements.
 | Name | Description |
 |------|-------------|
 | <a name="output_availability_zone"></a> [availability\_zone](#output\_availability\_zone) | n/a |
-| <a name="output_dedicated_host_id"></a> [dedicated\_host\_id](#output\_dedicated\_host\_id) | Dedicated Host ID |
-| <a name="output_dedicated_hosts_arn"></a> [dedicated\_hosts\_arn](#output\_dedicated\_hosts\_arn) | The ARN of the Dedicated Host. |
+| <a name="output_ec2_arn"></a> [ec2\_arn](#output\_ec2\_arn) | n/a |
+| <a name="output_ec2_iam_instance_profile_arn"></a> [ec2\_iam\_instance\_profile\_arn](#output\_ec2\_iam\_instance\_profile\_arn) | n/a |
+| <a name="output_ec2_iam_instance_profile_id"></a> [ec2\_iam\_instance\_profile\_id](#output\_ec2\_iam\_instance\_profile\_id) | n/a |
+| <a name="output_ec2_iam_instance_profile_unique"></a> [ec2\_iam\_instance\_profile\_unique](#output\_ec2\_iam\_instance\_profile\_unique) | n/a |
+| <a name="output_ec2_iam_role_arn"></a> [ec2\_iam\_role\_arn](#output\_ec2\_iam\_role\_arn) | n/a |
+| <a name="output_ec2_iam_role_name"></a> [ec2\_iam\_role\_name](#output\_ec2\_iam\_role\_name) | n/a |
+| <a name="output_ec2_iam_role_unique_id"></a> [ec2\_iam\_role\_unique\_id](#output\_ec2\_iam\_role\_unique\_id) | n/a |
+| <a name="output_ec2_id"></a> [ec2\_id](#output\_ec2\_id) | n/a |
+| <a name="output_ec2_instance_state"></a> [ec2\_instance\_state](#output\_ec2\_instance\_state) | n/a |
+| <a name="output_ec2_ipv6_addresses"></a> [ec2\_ipv6\_addresses](#output\_ec2\_ipv6\_addresses) | n/a |
+| <a name="output_ec2_primary_network_interface_id"></a> [ec2\_primary\_network\_interface\_id](#output\_ec2\_primary\_network\_interface\_id) | n/a |
+| <a name="output_ec2_private_dns"></a> [ec2\_private\_dns](#output\_ec2\_private\_dns) | n/a |
+| <a name="output_ec2_private_ip"></a> [ec2\_private\_ip](#output\_ec2\_private\_ip) | n/a |
+| <a name="output_ec2_public_dns"></a> [ec2\_public\_dns](#output\_ec2\_public\_dns) | n/a |
+| <a name="output_ec2_public_ip"></a> [ec2\_public\_ip](#output\_ec2\_public\_ip) | n/a |
+| <a name="output_ec2_tags_all"></a> [ec2\_tags\_all](#output\_ec2\_tags\_all) | n/a |
+| <a name="output_host_arn"></a> [host\_arn](#output\_host\_arn) | n/a |
+| <a name="output_host_id"></a> [host\_id](#output\_host\_id) | n/a |
 | <a name="output_mac_ami_architecture"></a> [mac\_ami\_architecture](#output\_mac\_ami\_architecture) | n/a |
 | <a name="output_mac_ami_description"></a> [mac\_ami\_description](#output\_mac\_ami\_description) | n/a |
 | <a name="output_mac_ami_id"></a> [mac\_ami\_id](#output\_mac\_ami\_id) | n/a |
