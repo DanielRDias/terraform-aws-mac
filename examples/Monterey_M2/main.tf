@@ -9,8 +9,8 @@ module "mac" {
   subnet_id     = "subnet-xxx"
 
   tags = {
-    Name    = "Terraform Mac"
-    Version = "12 macOS Monterey"
-    Type    = "mac2"
+    Name        = "Terraform Mac"
+    Terraform   = "true"
+    Environment = "dev"
   }
 }
