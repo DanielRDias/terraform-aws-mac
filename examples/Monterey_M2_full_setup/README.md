@@ -1,6 +1,9 @@
 # macOS Monterey - mac2 - example
 
 Configuration in this directory creates a dedicated host with a mac2.metal instance running Monterey.
+The instance root block device will be encrypted and has 50GB in size.
+Metadata options are enabled but require HTTP token authentication.
+The security group only allows ssh ingress to a specific IP, but you can adjust it if you have additional requirements.
 
 ## Example source code
 
@@ -9,17 +12,68 @@ provider "aws" {
   region = "us-east-1"
 }
 
-module "dedicated-host" {
-  source            = "DanielRDias/mac/aws"
-  version           = "1.0.0"
-  macos_version     = "12"   # macOS Monterey
-  mac_type          = "mac2" # arm64_mac
-  subnet_id         = "subnet-xxx"
+module "mac" {
+  source        = "../../"
+  macos_version = "12"   # macOS Monterey
+  mac_type      = "mac2" # arm64_mac
+  subnet_id     = "subnet-xxx"
+
+  key_name = "my-mac-ssh-key-name" # in case you don't have an ssh key yet go to the "AWS console > ec2 > Key pairs" and create one
+
+  vpc_security_group_ids = [aws_security_group.ssh.id]
+
+  enable_volume_tags = false
+  root_block_device = [
+    {
+      encrypted   = true
+      volume_type = "gp3"
+      throughput  = 200
+      volume_size = 50
+      tags = {
+        Name = "my-mac-root-block"
+      }
+    }
+  ]
+
+  metadata_options = {
+    http_endpoint               = "enabled"
+    http_tokens                 = "required"
+    http_put_response_hop_limit = 2
+    instance_metadata_tags      = "enabled"
+  }
 
   tags = {
     Name        = "Terraform Mac"
     Terraform   = "true"
     Environment = "dev"
+  }
+}
+
+resource "aws_security_group" "ssh" {
+  name        = "allow_ssh"
+  description = "Allow SSH inbound traffic"
+
+  # vpc_id = vpc-xxx # add your vpc in case you are not using the default VPC
+
+  ingress {
+    description = "SSH ingress access only to your IP"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["123.4.5.6/32"] # replace 123.4.5.6 with your IP 
+  }
+
+  # Uncomment this code if you want to allow all internet egress access
+  # egress {
+  #   description = "Egress access to everything on the internet"
+  #   from_port   = 0
+  #   to_port     = 0
+  #   protocol    = "-1"
+  #   cidr_blocks = ["0.0.0.0/0"]
+  # }
+
+  tags = {
+    Name = "allow_ssh"
   }
 }
 ```
@@ -31,7 +85,9 @@ No requirements.
 
 ## Providers
 
-No providers.
+| Name | Version |
+|------|---------|
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.55.0 |
 
 ## Modules
 
@@ -41,7 +97,9 @@ No providers.
 
 ## Resources
 
-No resources.
+| Name | Type |
+|------|------|
+| [aws_security_group.ssh](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
 
 ## Inputs
 
